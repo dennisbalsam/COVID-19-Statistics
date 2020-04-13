@@ -22,3 +22,5 @@ export const fetchData = async () => {
         console.log(error)        
     }
 }
+
+
