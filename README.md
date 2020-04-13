@@ -1,3 +1,13 @@
+# COVID-19-Statistics
+Creating a COVID-19 tracker in ReactJS using https://covid19.mathdro.id/api
+
+Projects like these can help spread awarness in these troubling times
+
+
+Doing this in ReactJS to continue to learn/master this framework for future projects
+
+
+----------------------------------------------------------------------------------------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
