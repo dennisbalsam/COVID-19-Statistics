@@ -5,11 +5,13 @@ import Cards from './components/DataCards/cards'
 import Countries from './components/Countries/countrypicker'
 import Chart from './components/Chart/chart'
 import { fetchData } from './api'
+import Logo from './images/covid-19_logo_CCUA.png'
 
 class App extends Component {
 
     state = {
         data: {},
+        country: ''
     }
 
     // call api
@@ -18,14 +20,27 @@ class App extends Component {
 
         this.setState({ data: fetchedData })
     }
+
+    handleCountryChange = async(country) => {
+        //fetch data
+        //set state
+        const fetchedData = await fetchData(country);
+
+
+        this.setState({ data: fetchedData, country: country })
+
+
+    }
+
     render() {
-        const { data } = this.state;
+        const { data, country } = this.state;
 
         return (
-            <div className={styles.container}>
+            <div style={{marginBottom: '100px'}} className={styles.container}>
+                <img width="300px"  src={Logo}></img>
                 <Cards data={data} />
-                <Countries />
-                <Chart/>
+                <Countries handleCountryChange={this.handleCountryChange}/>
+                <Chart data={data} country={country} />
             </div>
         )
     }

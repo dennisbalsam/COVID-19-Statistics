@@ -1,13 +1,21 @@
 // functions to fetch data
 import axios from 'axios'
+import CountryPicker from '../components/Countries/countrypicker';
 
 const url = 'https://covid19.mathdro.id/api';
 
-export const fetchData = async () => {
+export const fetchData = async(country) => {
+    let urlalter = url;
+
+    if(country) {
+        urlalter = `${url}/countries/${country}`
+        console.log(urlalter)
+    }
+
     //try catch for api
     try {
         // use axios to make api call
-        const { data: { confirmed, recovered, deaths, lastUpdate }} = await axios.get(url);
+        const { data: { confirmed, recovered, deaths, lastUpdate }} = await axios.get(urlalter);
 
         const modifiedData = {
             confirmed,
@@ -36,7 +44,16 @@ export const fetchDailyData = async() => {
 
         return modifiedData;
     } catch (error) {
-        
+        console.log(error)
     }
 }
 
+export const fetchCountries = async() =>{
+    try {
+        const { data: {countries}} = await axios.get(url + '/countries')
+
+        return countries.map((country) => country.name)
+    } catch (error) {
+        console.log(error)
+    }
+}

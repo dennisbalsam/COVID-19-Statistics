@@ -6,8 +6,6 @@ import CountUP from 'react-countup';
 
 export default function cards({data: {confirmed, recovered, deaths, lastUpdate}}) {
 
-    console.log(confirmed)
-
     if(!confirmed) {
         return 'Loading...'
     }
