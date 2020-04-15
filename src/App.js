@@ -37,7 +37,7 @@ class App extends Component {
 
         return (
             <div style={{marginBottom: '100px'}} className={styles.container}>
-                <img width="300px"  src={Logo}></img>
+                <img width="300px"  src={Logo} alt="logo"></img>
                 <Cards data={data} />
                 <Countries handleCountryChange={this.handleCountryChange}/>
                 <Chart data={data} country={country} />

@@ -1,6 +1,6 @@
 // functions to fetch data
 import axios from 'axios'
-import CountryPicker from '../components/Countries/countrypicker';
+
 
 const url = 'https://covid19.mathdro.id/api';
 
@@ -9,7 +9,6 @@ export const fetchData = async(country) => {
 
     if(country) {
         urlalter = `${url}/countries/${country}`
-        console.log(urlalter)
     }
 
     //try catch for api

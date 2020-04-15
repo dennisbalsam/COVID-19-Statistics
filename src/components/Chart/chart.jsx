@@ -15,17 +15,6 @@ const Chart = ( {data: {confirmed, deaths, recovered }, country}) => {
         fetchAPI();
     }, []);
 
-    const lineChart = (
-        dailyData.length
-        ? (<Line data ={{
-            labels: dailyData.map(({ date }) => date),
-            datasets: [
-                {data : dailyData.map(({ confirmed }) => confirmed), label: 'Infected', borderColor:'blue', fill: true},
-                {data : dailyData.map(({ deaths }) => deaths), label: 'Deaths', borderColor:'red', backgroundColor:'rgba(255,0,0,0.50', fill: true}
-            ]
-        }}/>): null 
-    );
-
     const barChart = (
         confirmed ? (
             <Bar data={{
@@ -38,14 +27,26 @@ const Chart = ( {data: {confirmed, deaths, recovered }, country}) => {
                 }}
                 options={{
                     legend: {display: false} , 
-                    title: {display: true, text: 'Current State in ' + country}
+                    title: {display: true, text: country, fontSize: 30, fontColor: 'black'},
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                fontSize: 15,
+                                fontColor: 'black'
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {fontSize: 15, fontColor: 'black'}
+                        }]  
+
+                    }
                 }}/>
         ): null
     );
 
     return (
         <div className={styles.container}>
-            {country ? barChart : lineChart}
+            {barChart}
         </div>
     )
 }
