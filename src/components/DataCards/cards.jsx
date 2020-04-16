@@ -13,7 +13,7 @@ export default function cards({data: {confirmed, recovered, deaths, lastUpdate}}
     return (
         <div className={styles.container}>
             <Grid container spacing={5} justify="center" style={{marginBottom: '40px'}}>
-                <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.infected)}>
+                <Grid item component={Card} xs={10} md={3} className={cx(styles.card, styles.infected)}>
                     <CardContent>
                         <Typography variant="h6" color="textSecondary" gutterBottom>
                             Infected
@@ -26,7 +26,7 @@ export default function cards({data: {confirmed, recovered, deaths, lastUpdate}}
                         </Typography>
                     </CardContent>
                 </Grid>
-                <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.recovered)}>
+                <Grid item component={Card} xs={10} md={3} className={cx(styles.card, styles.recovered)}>
                     <CardContent>
                         <Typography variant="h6" color="textSecondary" gutterBottom>
                             Recovered
@@ -39,7 +39,7 @@ export default function cards({data: {confirmed, recovered, deaths, lastUpdate}}
                         </Typography>
                     </CardContent>
                 </Grid>
-                <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.deaths)}>
+                <Grid item component={Card} xs={10} md={3} className={cx(styles.card, styles.deaths)}>
                     <CardContent>
                         <Typography variant="h6"  color="textSecondary" gutterBottom>
                             Deaths

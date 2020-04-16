@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "express-generator": "^4.16.1",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.0",
     "react-chartjs-2": "^2.9.0",
     "react-countup": "^4.3.3",
     "react-dom": "^16.13.1",

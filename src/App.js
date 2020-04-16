@@ -6,7 +6,7 @@ import Countries from './components/Countries/countrypicker'
 import Chart from './components/Chart/chart'
 import { fetchData } from './api'
 import Logo from './images/covid-19_logo_CCUA.png'
-
+import Alert from './components/Alerts/alerts'
 class App extends Component {
 
     state = {
@@ -41,6 +41,7 @@ class App extends Component {
                 <Cards data={data} />
                 <Countries handleCountryChange={this.handleCountryChange}/>
                 <Chart data={data} country={country} />
+                <Alert/>
             </div>
         )
     }
