@@ -33,6 +33,7 @@ const Chart = ( {data: {confirmed, deaths, recovered }, country}) => {
                             ticks: {
                                 fontSize: 15,
                                 fontColor: 'black'
+                                
                             }
                         }],
                         xAxes: [{

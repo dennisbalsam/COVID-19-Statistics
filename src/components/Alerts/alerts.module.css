@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+
 .container {
     background-color: rgb(255, 255, 255);
     width: 30%;
@@ -19,9 +21,12 @@
 
 .button {
     width: 30%;
-    background-color: rgb(218, 216, 216) !important;
+    background-color: rgba(0,255,0,0.5) !important;
     margin-top: 25px !important;
-    color: black;
+    color: black !important;
+    font-size: 18px !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-weight: bold !important;
 }
 
 .info {
@@ -30,8 +35,7 @@
     margin-top: 20px;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+.messages {
+    font-family: 'Manrope', sans-serif;
+    width: 90%;
 }

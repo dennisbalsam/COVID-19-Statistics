@@ -41,7 +41,7 @@ class App extends Component {
                 <Cards data={data} />
                 <Countries handleCountryChange={this.handleCountryChange}/>
                 <Chart data={data} country={country} />
-                <Alert/>
+                <Alert data={data}/>
             </div>
         )
     }

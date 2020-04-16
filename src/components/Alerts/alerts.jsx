@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import styles from './alerts.module.css'
+import cx from 'classnames';
 import {
   Grid,
   Button, 
@@ -12,7 +13,8 @@ const initialState = {
   name: '',
   phoneNumber: '',
   error: false,
-  helperText: ''
+  helperText: '',
+  submittionText: ''
 };
 
 class Alerts extends Component {
@@ -22,17 +24,10 @@ class Alerts extends Component {
     name: '',
     phoneNumber: '',
     error: false,
-    helperText: ''
+    helperText: '',
+    submittionText: ''
   }
 
-
-sendMessage = async () => {
-    const api = await fetch('/api/alert')
-    const data = await api.json()
-    const text = data.response
-
-    this.setState( { text })
-}
 
 storeData = async(event) => {
 
@@ -41,18 +36,25 @@ storeData = async(event) => {
 
 
 
-    if(this.state.phoneNumber.length === 11) {
-      event.target.reset();
-      this.setState(initialState)
+    if(this.state.phoneNumber.length === 10 && isNaN(this.state.phoneNumber) === false) {
 
+      //create object
       let newPerson = {
         number: this.state.phoneNumber,
         name: this.state.name
       }
 
-      axios.post('/api/data', newPerson).then(() =>{
-        console.log('success')
+      // call express backend
+      axios.post('https://infinite-depths-83495.herokuapp.com/api/data', newPerson).then((response) =>{
+        console.log(response.data)
+        this.setState({ submittionText: response.data.response})
       })
+
+  
+
+      //reset the form
+      event.target.reset();
+      this.setState(initialState)
       
     }
     else {
@@ -66,9 +68,10 @@ handleNameChange = (event) => {
 }
 
 handleNumberChange = (event) => {
-  if (event.target.value.length === 11) {
+  let input = event.target.value.trim()
+  if (input.length === 10 && isNaN(input) === false) {
     this.setState({ helperText: '', error: false });
-    this.setState({phoneNumber: event.target.value});
+    this.setState({phoneNumber: input});
   } else {
       this.setState({ helperText: 'Invalid Number Format', error: true });
   }
@@ -80,7 +83,7 @@ render() {
     return (
       <div className={styles.container}>
 
-        <h2 className={styles.info}>Enter your personal information in the below form, for daily statistics about COVID-19</h2>
+        <h2 className={cx(styles.messages,styles.info)}>Enter your personal information in the form below, for daily statistics about COVID-19</h2>
         <form onSubmit={this.storeData} style={{padding: '30px'}}>
           <Grid>
             <TextField
@@ -112,8 +115,8 @@ render() {
                     error={this.state.error}
                     helperText={this.state.helperText}
                     inputProps={{
-                      maxLength: 11,
-                      minLength:11
+                      maxLength: 10,
+                      minLength:10
                     }}
               /> 
           </Grid>
@@ -121,6 +124,7 @@ render() {
           <Button type="submit" className={styles.button}>
             Submit
           </Button>
+          <h2 className={styles.messages} style={{marginTop: '30px'}}>{this.state.submittionText}</h2>
         </form>
       </div>
     )
