@@ -6,6 +6,8 @@ Projects like these can help spread awarness in these troubling times
 
 Doing this in ReactJS to continue to learn/master this framework for future projects
 
+## GIF Walkthrough
+<img src='https://media.giphy.com/media/QZh3vHjkVEIDkUlEnG/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ----------------------------------------------------------------------------------------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
